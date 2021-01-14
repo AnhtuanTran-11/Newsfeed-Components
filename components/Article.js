@@ -134,7 +134,7 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
 
   article.classList.add('article');
   article.classList.add('date');
-  article.classList.add('expandButton');
+  span.classList.add('expandButton');
 
   articleTitle.textContent = title;
   dates.textContent = date;
@@ -144,7 +144,7 @@ function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagr
   span.textContent = "+";
 
   span.addEventListener("click", () => {
-    span.classList.toggle("article-open");
+    article.classList.toggle("article-open");
   })
 
   return article;

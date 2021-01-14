@@ -39,7 +39,6 @@ function menuMaker(menuItems) {
   const unOrdered = document.createElement('ul');
 
   menu.appendChild(unOrdered);
-
   menu.classList.add("menu");
   menuItems.forEach( (item) => {
     const listItems = document.createElement("li");
@@ -50,17 +49,19 @@ function menuMaker(menuItems) {
   const menuButton = document.querySelector('.menu-button');
 
   menuButton.addEventListener("click", () => {
-    menuButton.classList.toggle("menu--open");
-    menu.appendChild(unOrdered)
+    menu.classList.toggle("menu--open");
+  
+  const header = document.querySelector('.header');
+  header.appendChild(menu);
   })
   
   return menu;
 }
+menuMaker(menuItems);
+// const menuElements = menuItems.map( (menuItem) => {
+//   return menuMaker(menuItem);
+// })
 
-const menuElements = menuItems.map( (menuItem) => {
-  return menuMaker(menuItem);
-})
-
-menuElements.forEach( (menuElement) => {
-  header.appendChild(menuElement);
-})
+// menuElements.forEach( (menuElement) => {
+//header.appendChild(menuElement);
+// })

@@ -114,3 +114,57 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+//Grabs the element with the class "articles"
+const articles = document.querySelector('.articles');
+
+//Create a function that creates articles from the array of objects
+function articleMaker({title, date, firstParagraph, secondParagraph, thirdParagraph}) {
+
+  //Create the HTML elements and store them in variables
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const dates = document.createElement('p');
+  const paragraph1 = document.createElement('p');
+  const paragraph2 = document.createElement('p');
+  const paragraph3 = document.createElement('p');
+  const span = document.createElement('span');
+  
+  //Attaches the HTML elements to the div
+  article.appendChild(articleTitle);
+  article.appendChild(dates);
+  article.appendChild(paragraph1);
+  article.appendChild(paragraph2);
+  article.appendChild(paragraph3);
+  article.appendChild(span);
+
+  //Attaches the classes to the necessary HTML elements
+  article.classList.add('article');
+  article.classList.add('date');
+  span.classList.add('expandButton');
+
+  //Attaches the text content for the HTML elements
+  articleTitle.textContent = title;
+  dates.textContent = date;
+  paragraph1.textContent = firstParagraph;
+  paragraph2.textContent = secondParagraph;
+  paragraph3.textContent = thirdParagraph;
+  span.textContent = "+";
+
+  //Adds an event listener for the span element when clicked, and adds the toggle class for the expand button
+  span.addEventListener("click", () => {
+    article.classList.toggle("article-open");
+  })
+
+  return article;
+
+}
+//Iterate through the array of objects, and return an array with each of the items passed through the component maker
+const articleElements = data.map( (dataItem) => {
+  return articleMaker(dataItem);
+})
+
+//Appends each item in the array of objects to the div
+articleElements.forEach( (articleElement) => {
+  articles.appendChild(articleElement);
+})
